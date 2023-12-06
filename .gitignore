@@ -19,3 +19,10 @@
 
 # Go workspace file
 go.work
+.DS_Store
+TODO.md
+logs.txt
+.idea/
+secret.md
+app.env
+tmp/
