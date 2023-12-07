@@ -1,6 +1,10 @@
 package models
 
-import "time"
+import (
+	"time"
+
+	"github.com/google/uuid"
+)
 
 type Member struct {
 	ID            int    `gorm:"primary_key;auto_increment"`
@@ -25,9 +29,11 @@ type Member struct {
 	FeePackageId  int    `gorm:"not null"`
 	CreatedAt     time.Time
 	UpdatedAt     time.Time
+	CreatedBy     uuid.UUID
+	UpdatedBy     uuid.UUID
 }
 
-type MemberInput struct {
+type MemberRequest struct {
 	Name          string `json:"name" binding:"required"`
 	Email         string `json:"email" `
 	Phone         string `json:"phone" binding:"required"`
@@ -72,4 +78,6 @@ type MemberResponse struct {
 	FeePackageId  int       `json:"fee_package_id,omitempty"`
 	CreatedAt     time.Time `json:"created_at,omitempty"`
 	UpdatedAt     time.Time `json:"updated_at,omitempty"`
+	CreatedBy     uuid.UUID `json:"created_by,omitempty"`
+	UpdatedBy     uuid.UUID `json:"updated_by,omitempty"`
 }

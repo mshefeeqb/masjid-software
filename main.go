@@ -21,6 +21,12 @@ var (
 
 	MemberController      controllers.MemberController
 	MemberRouteController routes.MemberRouteController
+
+	FeePackageController      controllers.FeePackageController
+	FeePackageRouteController routes.FeePackageRouteController
+
+	WardController      controllers.WardController
+	WardRouteController routes.WardRouteController
 )
 
 func init() {
@@ -39,6 +45,12 @@ func init() {
 
 	MemberController = controllers.NewMemberController(initializers.DB)
 	MemberRouteController = routes.NewMemberRouteController(MemberController)
+
+	FeePackageController = controllers.NewFeePackageController(initializers.DB)
+	FeePackageRouteController = routes.NewFeePackageRouteController(FeePackageController)
+
+	WardController = controllers.NewWardController(initializers.DB)
+	WardRouteController = routes.NewWardRouteController(WardController)
 
 	server = gin.Default()
 }
@@ -64,5 +76,7 @@ func main() {
 	AuthRouteController.AuthRoute(router)
 	UserRouteController.UserRoute(router)
 	MemberRouteController.MemberRoute(router)
+	FeePackageRouteController.FeePackageRoute(router)
+	WardRouteController.WardRoute(router)
 	log.Fatal(server.Run(":" + config.ServerPort))
 }

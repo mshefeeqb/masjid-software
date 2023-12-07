@@ -38,8 +38,6 @@ func DeserializeUser() gin.HandlerFunc {
 		}
 
 		var user models.User
-		fmt.Print(fmt.Sprint(user))
-		fmt.Print(fmt.Sprint(sub))
 
 		result := initializers.DB.First(&user, "id = ?", fmt.Sprint(sub))
 		if result.Error != nil {

@@ -19,7 +19,7 @@ type User struct {
 	UpdatedAt time.Time
 }
 
-type SignUpInput struct {
+type SignUpRequest struct {
 	Name            string `json:"name" binding:"required"`
 	Email           string `json:"email" `
 	Phone           string `json:"phone" binding:"required"`
@@ -29,7 +29,7 @@ type SignUpInput struct {
 	Role            string `json:"role"`
 }
 
-type SignInInput struct {
+type SignInRequest struct {
 	Phone    string `json:"phone" binding:"required"`
 	Password string `json:"password"  binding:"required"`
 }

@@ -23,7 +23,7 @@ func NewAuthController(DB *gorm.DB) AuthController {
 
 // [...] SignUp User
 func (ac *AuthController) SignUpUser(ctx *gin.Context) {
-	var payload *models.SignUpInput
+	var payload *models.SignUpRequest
 
 	if err := ctx.ShouldBindJSON(&payload); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"status": "fail", "message": err.Error()})
@@ -79,7 +79,7 @@ func (ac *AuthController) SignUpUser(ctx *gin.Context) {
 
 // [...] Login User
 func (ac *AuthController) SignInUser(ctx *gin.Context) {
-	var payload *models.SignInInput
+	var payload *models.SignInRequest
 
 	if err := ctx.ShouldBindJSON(&payload); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"status": "fail", "message": err.Error()})
